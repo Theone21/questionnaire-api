@@ -41,6 +41,11 @@ public class R {
     public static R ok(String msg, Object data) {
         return new R(R.OK,msg,data);
     }
+
+    public static R ok(String msg) {
+        return new R(R.OK, msg, null);
+    }
+
     public static R ok(int code, String msg, Object data) {
         return new R(code,msg,data);
     }
