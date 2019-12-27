@@ -3,6 +3,7 @@ package com.questionnaire.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.questionnaire.common.result.PageLimit;
+import com.questionnaire.common.result.TableData;
 import com.questionnaire.dao.entity.User;
 import com.questionnaire.dao.mapper.UserMapper;
 import com.questionnaire.service.UserService;
@@ -37,10 +38,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> list(PageLimit pageLimit) {
+    public TableData list(PageLimit pageLimit) {
         Page<User> page = new Page<>(0, 10);
         page.getTotal();
-        return userMapper.selectPage(page, new QueryWrapper()).getRecords();
+        TableData tableData = new TableData();
+        tableData.setCount(userMapper.selectCount(new QueryWrapper<User>()));
+        tableData.setData(userMapper.selectPage(page, new QueryWrapper<User>()).getRecords());
+        return tableData;
     }
 
 

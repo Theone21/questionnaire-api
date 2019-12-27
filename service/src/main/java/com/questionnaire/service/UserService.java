@@ -2,6 +2,7 @@ package com.questionnaire.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.questionnaire.common.result.PageLimit;
+import com.questionnaire.common.result.TableData;
 import com.questionnaire.dao.entity.User;
 
 import java.util.List;
@@ -14,5 +15,5 @@ public interface UserService {
 
     void addUser(User user);
 
-    List<User> list(PageLimit pageLimit);
+    TableData list(PageLimit pageLimit);
 }
