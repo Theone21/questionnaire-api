@@ -56,13 +56,13 @@ public class SysController {
     }
 
     /**
-     * 删除一个用户
+     * 删除多个用户
      * @param users
      * @return
      */
     @PostMapping("/delUser")
     public R delUser(@RequestBody List<User> users){
-        users.forEach(user -> user.deleteById());
+        users.forEach(User::deleteById);
         return R.ok("删除成功！");
     }
 
@@ -76,15 +76,25 @@ public class SysController {
         return functionService.getFunctionList(pageLimit);
     }
 
+    /**
+     * 新增权限
+     * @param function 权限
+     * @return R 返回值
+     */
     @PostMapping("/addFunction")
     public R addFunction(Function function){
-        function.insert();
-        return R.ok("添加权限成功！");
+        function.insertOrUpdate();
+        return R.ok("添加或者修改权限成功！");
     }
 
+    /**
+     * 删除选中的权限
+     * @param functions 权限s
+     * @return R 返回值
+     */
     @PostMapping("/delFunction")
     public R delFunction(@RequestBody List<Function> functions){
-        functions.forEach(function -> function.deleteById());
+        functions.forEach(Function::deleteById);
         return R.ok("删除权限成功");
     }
 }

@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.questionnaire.common.result.PageLimit;
 import com.questionnaire.common.result.TableData;
-import com.questionnaire.dao.entity.sys.Function;
 import com.questionnaire.dao.entity.sys.User;
 import com.questionnaire.dao.mapper.sys.UserMapper;
 import com.questionnaire.service.UserService;
@@ -20,21 +19,11 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public User findUserById() {
-        return userMapper.selectById(2);
-    }
-
-    @Override
     public boolean userExists(User user) {
         User findUser = userMapper.selectOne(new QueryWrapper<User>()
                 .eq("USER_NAME", user.getUserName())
                 .eq("USER_PASSWORD", user.getUserPassword()));
         return findUser != null;
-    }
-
-    @Override
-    public void addUser(User user) {
-
     }
 
     @Override

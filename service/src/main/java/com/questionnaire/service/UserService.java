@@ -6,11 +6,7 @@ import com.questionnaire.dao.entity.sys.User;
 
 public interface UserService {
 
-    User findUserById();
-
     boolean userExists(User user);
-
-    void addUser(User user);
 
     TableData list(PageLimit pageLimit);
 }
