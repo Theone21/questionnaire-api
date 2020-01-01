@@ -1,6 +1,6 @@
 package com.questionnaire.dao;
 
-import com.questionnaire.dao.entity.User;
+import com.questionnaire.dao.entity.sys.User;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

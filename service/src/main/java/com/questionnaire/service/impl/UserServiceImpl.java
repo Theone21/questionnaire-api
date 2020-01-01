@@ -4,13 +4,13 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.questionnaire.common.result.PageLimit;
 import com.questionnaire.common.result.TableData;
-import com.questionnaire.dao.entity.User;
-import com.questionnaire.dao.mapper.UserMapper;
+import com.questionnaire.dao.entity.sys.Function;
+import com.questionnaire.dao.entity.sys.User;
+import com.questionnaire.dao.mapper.sys.UserMapper;
 import com.questionnaire.service.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -39,12 +39,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public TableData list(PageLimit pageLimit) {
-        Page<User> page = new Page<>(0, 10);
-        page.getTotal();
-        TableData tableData = new TableData();
-        tableData.setCount(userMapper.selectCount(new QueryWrapper<User>()));
-        tableData.setData(userMapper.selectPage(page, new QueryWrapper<User>()).getRecords());
-        return tableData;
+        Page<User> page = new Page<>(pageLimit.getCurrentPage(), pageLimit.getPageSize());
+        Page<User> result = userMapper.selectPage(page, new QueryWrapper<User>());
+
+        return new TableData(result.getTotal(), result.getRecords());
     }
 
 
