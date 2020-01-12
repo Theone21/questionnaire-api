@@ -5,6 +5,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
+/**
+ * 前端传递的分页bean
+ */
 public class PageLimit {
 
     private int pageSize;

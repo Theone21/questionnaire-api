@@ -11,16 +11,18 @@ import java.io.Serializable;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@TableName("sys_function")
-public class Function extends Model<Function> {
+@TableName("sys_roles")
+public class Role extends Model<Role> {
 
-    @TableId(value = "FUNCTION_ID", type = IdType.AUTO)
-    private int functionId;
-    private String functionCode;
-    private String functionName;
+    @TableId(value = "ROLE_ID", type = IdType.AUTO)
+    private long roleId;
+    private String roleName;
+    private String roleCode;
 
     @Override
     protected Serializable pkVal() {
-        return functionId;
+        return roleId;
     }
+
+
 }

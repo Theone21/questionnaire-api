@@ -12,6 +12,13 @@ spring:
       port: 35729
     restart:
       enabled: true
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
 logging:
   level:
     com.questionnaire.dao.*: trace
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml

@@ -1,11 +1,9 @@
-package com.questionnaire.controller;
+package com.questionnaire.controller.sys;
 
 import com.questionnaire.common.result.PageLimit;
 import com.questionnaire.common.result.R;
 import com.questionnaire.common.result.TableData;
-import com.questionnaire.dao.entity.sys.Function;
 import com.questionnaire.dao.entity.sys.User;
-import com.questionnaire.service.FunctionService;
 import com.questionnaire.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,12 +16,10 @@ public class SysController {
 
     @Autowired
     private UserService userService;
-    @Autowired
-    private FunctionService functionService;
 
-    @GetMapping("/test")
+    @GetMapping(value = "/test")
     public R test(){
-        return R.ok("testaaa");
+        return R.ok("成功");
     }
 
     @PostMapping("/login")
@@ -66,35 +62,5 @@ public class SysController {
         return R.ok("删除成功！");
     }
 
-    /**
-     * 分页查询用户
-     * @param pageLimit
-     * @return
-     */
-    @GetMapping("/getFunctionList")
-    public TableData getFunctionList(PageLimit pageLimit){
-        return functionService.getFunctionList(pageLimit);
-    }
 
-    /**
-     * 新增权限
-     * @param function 权限
-     * @return R 返回值
-     */
-    @PostMapping("/addFunction")
-    public R addFunction(Function function){
-        function.insertOrUpdate();
-        return R.ok("添加或者修改权限成功！");
-    }
-
-    /**
-     * 删除选中的权限
-     * @param functions 权限s
-     * @return R 返回值
-     */
-    @PostMapping("/delFunction")
-    public R delFunction(@RequestBody List<Function> functions){
-        functions.forEach(Function::deleteById);
-        return R.ok("删除权限成功");
-    }
 }

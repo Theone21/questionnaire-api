@@ -21,6 +21,7 @@
     <module>service</module>
     <module>web</module>
     <module>common</module>
+    <module>generator</module>
   </modules>
 
   <properties>
@@ -45,6 +46,16 @@
       <dependency>
         <groupId>com.baomidou</groupId>
         <artifactId>mybatis-plus</artifactId>
+        <version>${mybatisplus.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-generator</artifactId>
+        <version>${mybatisplus.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-dts</artifactId>
         <version>${mybatisplus.version}</version>
       </dependency>
       <dependency>
