@@ -75,6 +75,12 @@ public class FunctionController {
      */
     @GetMapping("/getFunctionAndDetailAndButton")
     public R getFunctionAndDetailAndButton(){
-        return R.ok("查询到一级和二级权限", getFunctionAndDetails(true));
+        return R.ok("查询到一级和二级权限和三级权限", getFunctionAndDetails(true));
+    }
+
+    @PostMapping("/deleteFunction")
+    public R deleteFunction(int functionId){
+        sysFunctionService.removeById(functionId);
+        return R.ok("删除权限成功");
     }
 }
