@@ -1,7 +1,10 @@
 package com.questionnaire.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.questionnaire.common.result.R;
 import com.questionnaire.dao.entity.sys.SysFunction;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,5 +15,10 @@ import com.questionnaire.dao.entity.sys.SysFunction;
  * @since 2020-01-12
  */
 public interface ISysFunctionService extends IService<SysFunction> {
+
+
+
+
+
 
 }

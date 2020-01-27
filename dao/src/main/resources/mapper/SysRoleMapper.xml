@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.questionnaire.dao.mapper.sys.RoleMapper">
+
+
+    <insert id="bindRoleAndFunction">
+        insert into sys_role_function(role_id, function_id) values (#{roleId}, #{functionId});
+    </insert>
+
+
+    <delete id="delAllRoleFunction">
+        delete from sys_role_function where role_id = #{roleId}
+    </delete>
+</mapper>

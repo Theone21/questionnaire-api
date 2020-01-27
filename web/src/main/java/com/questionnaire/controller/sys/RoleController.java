@@ -1,5 +1,6 @@
 package com.questionnaire.controller.sys;
 
+import com.alibaba.fastjson.JSON;
 import com.questionnaire.common.result.PageLimit;
 import com.questionnaire.common.result.R;
 import com.questionnaire.common.result.TableData;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -50,4 +52,31 @@ public class RoleController {
         roles.forEach(Role::deleteById);
         return R.ok("删除成功！");
     }
+
+    @PostMapping("/bindRoleAndFunction")
+    public R bindRoleAndFunction(String functionIds, Integer roleId){
+        List<Integer> ids=JSON.parseArray(functionIds, Integer.class);
+        return roleService.bindRoleAndFunction(ids, roleId);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
