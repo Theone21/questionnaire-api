@@ -13,4 +13,12 @@ public interface RoleService {
 
 
     R bindRoleAndFunction(List<Integer> functionIds, Integer roleId);
+
+    R getFunctionsByRoleId(Integer roleId);
+
+    R getAllRoles();
+
+    R setUserRoles(Integer userId, List<Integer> roles);
+
+    R getUserRoes(Integer userId);
 }

@@ -11,4 +11,36 @@
     <delete id="delAllRoleFunction">
         delete from sys_role_function where role_id = #{roleId}
     </delete>
+
+
+    <select id="getFunctionsByRoleId" resultType="java.util.Map">
+        SELECT
+            sf.function_id,
+            sf.function_name,
+            sf.function_code
+        FROM
+            sys_role_function srf
+            JOIN sys_function sf ON srf.function_id = sf.function_id
+        WHERE
+            srf.role_id = #{roleId}
+    </select>
+
+
+    <insert id="setUserRoles">
+        insert into sys_user_role(user_id, role_id) values (#{userId}, #{roleId});
+    </insert>
+
+
+    <delete id="delUserAllRoles">
+        delete from sys_user_role where user_id = #{userId}
+    </delete>
+
+    <select id="getUserRoles" resultType="java.util.Map">
+        select
+          sr.role_id as roleId
+        from sys_user_role sur
+        join sys_roles sr
+        on sur.role_id = sr.role_id
+        where sur.user_id = #{userId}
+    </select>
 </mapper>

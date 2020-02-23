@@ -53,10 +53,56 @@ public class RoleController {
         return R.ok("删除成功！");
     }
 
+    /**
+     * 为一个角色绑定多个权限
+     * @param functionIds 权限ID
+     * @param roleId 角色ID
+     * @return
+     * @author jinliujie
+     */
     @PostMapping("/bindRoleAndFunction")
     public R bindRoleAndFunction(String functionIds, Integer roleId){
         List<Integer> ids=JSON.parseArray(functionIds, Integer.class);
         return roleService.bindRoleAndFunction(ids, roleId);
+    }
+
+
+    /**
+     * 获取一个角色的权限
+     * @author jinliujie
+     */
+    @GetMapping("/getFunctionsByRoleId")
+    public R getFunctionsByRoleId(Integer roleId){
+        return roleService.getFunctionsByRoleId(roleId);
+    }
+
+    /**
+     * 获取所有的角色
+     * @return
+     */
+    @GetMapping("/getAllRoles")
+    public R getAllRoles(){
+        return roleService.getAllRoles();
+    }
+
+    /**
+     * 设置用户的角色
+     * @return
+     */
+    @PostMapping("/setUserRoles")
+    public R setUserRoles(Integer userId, String roles){
+        List<Integer> roleIds = JSON.parseArray(roles, Integer.class);
+        return roleService.setUserRoles(userId, roleIds);
+    }
+
+    /**
+     * 获取一个用户的角色
+     * @param userId 用户ID
+     * @return
+     */
+    @GetMapping("/getUserRoes")
+    public R getUserRoes(Integer userId){
+        return roleService.getUserRoes(userId);
     }
 
 
