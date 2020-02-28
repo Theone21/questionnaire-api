@@ -14,6 +14,7 @@ public class CorsConfig {
         corsConfiguration.addAllowedOrigin("*"); //允许任何域名
         corsConfiguration.addAllowedHeader("*"); //允许任何头
         corsConfiguration.addAllowedMethod("*"); //允许任何方法
+        corsConfiguration.setAllowCredentials(true);
         return corsConfiguration;
     }
 

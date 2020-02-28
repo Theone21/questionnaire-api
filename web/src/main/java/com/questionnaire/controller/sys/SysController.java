@@ -6,6 +6,7 @@ import com.questionnaire.common.result.TableData;
 import com.questionnaire.dao.entity.sys.User;
 import com.questionnaire.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,6 +38,7 @@ public class SysController {
      */
     @PostMapping("/addUser")
     public R addUser(User user){
+        user.setUserPassword(new BCryptPasswordEncoder().encode(user.getUserPassword()));
         user.insertOrUpdate();
         return R.ok("添加用户成功");
     }

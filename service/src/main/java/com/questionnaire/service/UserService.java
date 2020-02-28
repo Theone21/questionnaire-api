@@ -9,4 +9,8 @@ public interface UserService {
     boolean userExists(User user);
 
     TableData list(PageLimit pageLimit);
+
+    User getByUsername(String username);
+
+    String[] getRoleByUser(User user);
 }
